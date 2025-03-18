@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Ties</title>
+    <link rel="stylesheet" href="Assests\style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Legacy Ties</h1>
+            
+            
+        </div>
+        <div class = "navigation-bar">
+            <button class="home" onclick="showSection('home')">HOME</button>
+            <button class="about" onclick="showSection('about')">ABOUT</button>
+            <button class="alumni" onclick="showSection('alumni')">CONTACT</button>
+            <button class="login signUp" onclick="showSection('login')">LOGIN</button>
+            <button class="login signUp" onclick="showSection('login')">SIGN UP</button>
+            </div>
+    </header>
+    <main>
+        <div class="content">
+        <div id="home">
+            
+            <h1 class="introLine1">An Alumni Network</h1>
+            <h1 ><span class="introLine2"></span></h1>
+            <p class="introPara">At Legacy Ties, we believe that graduation is not the end of your journey with us—it’s just the beginning of a lifelong connection. Our platform is designed to bring together alumni from across generations, fostering a vibrant community of professionals, mentors, and lifelong learners.</p><br>
+            <!-- <p class="introPara">Reconnect with your batchmates, engage with fellow alumni, and explore new professional opportunities—all in one place. Whether you’re looking to expand your network, seek career guidance, or give back to the next generation, Legacy Ties is your gateway to meaningful connections.</p>
+         -->
+        </div> 
+
+        <div class="main-image">
+            <!-- Image from google -->
+            <img src="Assests\alumni.jpg" alt="Alumni-image">
+        </div>
+        <div class="get-started">Get Started</div>
+        
+        <!-- <section id="about">
+            <h2>About</h2>
+            <p>A dedicated platform to foster alumni relationships and career opportunities.</p>
+        </section>
+        
+        <section id="alumni">
+            <h2>Alumni Directory</h2>
+            <ul id="alumni-list"></ul>
+        </section>
+        
+        <section id="login">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </section> -->
+    </div>
+    </main>
+<script src="Assests\script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+    var typed = new Typed(".introLine2",{
+        strings : [ "Career Growth","Networking Opportunities","Student-Alumni Engagement"],
+        typeSpeed : 30,
+        backSpeed : 30,
+        loop : true,
+    })
+</script>
+</body>
+</html>
