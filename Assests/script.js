@@ -1,5 +1,6 @@
-const navigationBar = document.querySelector(".navigation-bar.button");
-
-navigationBar.addEventListener("click", (selectionId)=>{
-
-})
+// Navigation Bar
+document.getElementById("home").addEventListener("click", () => {
+    event.preventDefault(); 
+    window.location.href = "index.html"; 
+    
+});

@@ -54,24 +54,29 @@ header{
 .navigation-bar>button{
 background-color: transparent; 
 font-weight: bold;
-padding: 10px 20px;
+padding: 10px 15px;
 border: none;
-border-radius: 8px;
 cursor: pointer;
 font-size: 16px;
 
   
 }
 .navigation-bar>button:hover{
-    color: #E7F2F8;
-    outline: 1.5px solid;
-    box-shadow: 0px 4px 10px rgba(126, 34, 206, 0.4); 
+    color: black;
+    border-bottom: 2px solid;
+    border-color: #6819AB;
+    /* box-shadow: 0px 4px 10px rgba(126, 34, 206, 0.4);  */
+
     
     
 }
 .navigation-bar>button:active{
     /* transform: translateY(-2px); */
-    background-color: #e1f4ff;
+    /* background-color: #e1f4ff; */
+    border-bottom: 2.5px solid;
+    border-color: #6819AB;
+
+    
 }
 
 
@@ -84,7 +89,7 @@ main{
 }
 
 .content{
-    width: 80%;
+    width: fit-content;
     background-color: var(--first-color-lighter);
     padding: 50px;
     border-radius: 10px;
