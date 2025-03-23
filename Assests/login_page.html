@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <script src="Assets/script.js"></script>
+    <link rel="stylesheet" href="Assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container active" id="login-container">
+            <h2 style="color: #333;">Login</h2>
+            <form id="login-form">
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p><a href="#" data-target="forgot-password-container">Forgot Password?</a></p>
+                <p>Don't have an account? <a href="#" data-target="signup-container">Sign Up</a></p>
+            </form>
+        </div>
+        
+        <div class="form-container" id="signup-container">
+            <h2 style="color: #333;">Sign Up</h2>
+            <form id="signup-form">
+                <input type="text" placeholder="Username" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="text" placeholder="PRN No" required>
+                <select required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="date" required>
+                <div class="AluStu_tag">
+                <label><input type="radio" name="status" value="passout" id="passout">Alumni</label>
+                
+                <label><input type="radio" name="status" value="ongoing" id="ongoing">Student</label>
+                </div>
+                <div id="passout-fields" class="hidden">
+                    <input type="number" placeholder="Year of Passing">
+                    <input type="text" placeholder="Department">
+                </div>
+                
+                <div id="ongoing-fields" class="hidden">
+                    <input type="number" placeholder="Current Year">
+                    <input type="text" placeholder="Department">
+                </div>
+                
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="#" data-target="login-container">Login</a></p>
+            </form>
+        </div>
+
+        <div class="form-container" id="forgot-password-container">
+            <h2 style="color: #333;">Forgot Password</h2>
+            <form id="forgot-password-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Send Reset Code</button>
+                <p>Remembered your password? <a href="#" data-target="login-container">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    
+</body>
+</html>
