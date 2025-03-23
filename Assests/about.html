@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholar Mentor</title>
-    <link rel="stylesheet" href="..Assests/Nav-bar/style.css">
+    <link rel="stylesheet" href="../Assests/Nav-bar/style.css">
+
 </head>
 <body>
     <header>
@@ -23,18 +24,17 @@
     </header>
 </body>
 <script>
-    // Navigation Bar
-document.getElementById("home").addEventListener("click", () => {
-    window.location.href = "index.html"; 
-    
-});
+        // Navigation Bar
+    document.getElementById("home").addEventListener("click", () => {
+        window.open("/index.html"); 
+    });
 
-document.getElementById("about").addEventListener("click", () => {
-    window.location.href= "Assests/about.html";
-});
+    document.getElementById("about").addEventListener("click", () => {
+        window.open("/Assests/about.html");
+    });
 
-document.getElementById("login").addEventListener("click", () => {
-    window.location.href = "Assests/login_page.html"; 
-});
+    document.getElementById("login").addEventListener("click", () => {
+        window.open("/Assests/login_page.html"); 
+    });
 </script>
 </html>
