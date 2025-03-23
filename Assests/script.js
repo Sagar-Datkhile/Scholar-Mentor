@@ -5,12 +5,14 @@ document.getElementById("home").addEventListener("click", () => {
 });
 
 document.getElementById("about").addEventListener("click", () => {
-    window.location.href= "Assests/about.html";
+    window.location.href= "about.html";
 });
 
 document.getElementById("login").addEventListener("click", () => {
-    window.location.href = "Assests/login_page.html"; 
+    window.location.href = "login_page.html"; 
 });
 
-
+document.querySelector(".get-started").addEventListener("click", () => {
+    window.location.href = "login_page.html"; 
+});
 

@@ -49,7 +49,9 @@
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>
                     </select>
-                    <input type="date" required>
+                    <br>
+                    
+                    <input placeholder="Date of Birth" type="number" required>
                     <div class="AluStu_tag">
                     <label><input type="radio" name="status" value="passout" id="passout">Alumni</label>
                     
@@ -57,12 +59,30 @@
                     </div>
                     <div id="passout-fields" class="hidden">
                         <input type="number" placeholder="Year of Passing">
-                        <input type="text" placeholder="Department">
+                        <!-- <input type="text" placeholder="Department"> -->
+                        <select required>
+                            <option value="">Select Department</option>
+                            <option value="Computer Engineering">Computer Engineering</option>
+                            <option value="IT Engineering">IT Engineering</option>
+                            <option value="AI&DS Engineering">AI&DS Engineering</option>
+                            <option value="E&TC Engineering">E&TC Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            
+                        </select>
                     </div>
                     
                     <div id="ongoing-fields" class="hidden">
-                        <input type="number" placeholder="Current Year">
-                        <input type="text" placeholder="Department">
+                        <input type="number" placeholder="Year of Passing">
+                        <!-- <input type="text" placeholder="Department"> -->
+                        <select required>
+                            <option value="">Select Department</option>
+                            <option value="Computer Engineering">Computer Engineering</option>
+                            <option value="IT Engineering">IT Engineering</option>
+                            <option value="AI&DS Engineering">AI&DS Engineering</option>
+                            <option value="E&TC Engineering">E&TC Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            
+                        </select>
                     </div>
                     
                     <button id="btn" type="submit">Sign Up</button>
@@ -81,18 +101,19 @@
         </div>
     </main>
     <script>
-        // Navigation Bar
-    document.getElementById("home").addEventListener("click", () => {
-        window.open("/index.html"); 
-    });
+    // Navigation Bar
+document.getElementById("home").addEventListener("click", () => {
+    window.location.href = "index.html"; 
     
-    document.getElementById("about").addEventListener("click", () => {
-        window.open("/Assests/about.html");
-    });
-    
-    document.getElementById("login").addEventListener("click", () => {
-        window.open("/Assests/login_page.html"); 
-    });
+});
+
+document.getElementById("about").addEventListener("click", () => {
+    window.location.href= "about.html";
+});
+
+document.getElementById("login").addEventListener("click", () => {
+    window.location.href = "login_page.html"; 
+});
     </script>
 </body>
 </html>
