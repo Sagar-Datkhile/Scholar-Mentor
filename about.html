@@ -25,9 +25,9 @@
         </div>
         <div class = "navigation-bar">
             <button class="home" id="home">HOME</button>
-            <button class="about" id="about" onclick="showSection('about')">ABOUT</button>
+            <button class="about" id="about">ABOUT</button>
             <!-- <button class="alumni" onclick="showSection('alumni')">CONTACT</button> -->
-            <button class="login signUp" id="login signUp" onclick="showSection('login')">LOGIN</button>
+            <button class="login signUp" id="login">LOGIN</button>
             <!-- <button class="login signUp" onclick="showSection('login')">SIGN UP</button> -->
             </div>
     </header>
@@ -84,7 +84,7 @@ document.getElementById("about").addEventListener("click", () => {
 });
 
 document.getElementById("login").addEventListener("click", () => {
-    window.location.href = "login_page.html"; 
+    window.open("login_page.html", "_self"); 
 });
 </script>
 </html>
