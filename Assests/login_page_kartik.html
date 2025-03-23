@@ -3,34 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>Login & Sign Up</title>
     <script src="../Assests/Login-Assets/script.js"></script>
     <link rel="stylesheet" href="../Assests/Nav-bar/style.css">
     <link rel="stylesheet" href="../Assests/Login-Assets/style.css">
 </head>
 <body>
     <header>
-        <div class="logo" id="logo">
-            <h1>Scholar Mentor</h1>
-        </div>
-        <div class = "navigation-bar">
-            <button class="home" id="home">HOME</button>
-            <button class="about" id="about" onclick="showSection('about')">ABOUT</button>
-            <!-- <button class="alumni" onclick="showSection('alumni')">CONTACT</button> -->
-            <button class="login signUp" id="login signUp" onclick="showSection('login')">LOGIN</button>
-            <!-- <button class="login signUp" onclick="showSection('login')">SIGN UP</button> -->
+            <div class="logo" id="logo">
+                <h1>Scholar Mentor</h1>
+                
+                
             </div>
-    </header> 
-
+            <div class = "navigation-bar">
+                <button class="home" id="home">HOME</button>
+                <button class="about" id="about" onclick="showSection('about')">ABOUT</button>
+                <!-- <button class="alumni" onclick="showSection('alumni')">CONTACT</button> --> -->
+                <button class="login signUp" id="login signUp" onclick="showSection('login')">LOGIN</button>
+                <!-- <button class="login signUp" onclick="showSection('login')">SIGN UP</button> -->
+                </div>
+     </header> 
+    
     <main>
-        <div class="container" id="container">
+        <div class="container">
             <div class="form-container active" id="login-container">
                 <h2 style="color: #333;">Login</h2>
                 <form id="login-form">
                     <input type="text" placeholder="Username" required>
                     <input type="password" placeholder="Password" required>
-                    <br>
-                    <button id="btn" type="submit">Login</button>
+                    <button type="submit">Login</button>
                     <p><a href="#" data-target="forgot-password-container">Forgot Password?</a></p>
                     <p>Don't have an account? <a href="#" data-target="signup-container">Sign Up</a></p>
                 </form>
@@ -65,7 +66,7 @@
                         <input type="text" placeholder="Department">
                     </div>
                     
-                    <button id="btn" type="submit">Sign Up</button>
+                    <button type="submit">Sign Up</button>
                     <p>Already have an account? <a href="#" data-target="login-container">Login</a></p>
                 </form>
             </div>
@@ -74,7 +75,7 @@
                 <h2 style="color: #333;">Forgot Password</h2>
                 <form id="forgot-password-form">
                     <input type="email" placeholder="Enter your email" required>
-                    <button id="btn" type="submit">Send Reset Code</button>
+                    <button type="submit">Send Reset Code</button>
                     <p>Remembered your password? <a href="#" data-target="login-container">Login</a></p>
                 </form>
             </div>
@@ -82,18 +83,18 @@
     </main>
     <script>
         // Navigation Bar
-    document.getElementById("home").addEventListener("click", () => {
-        window.location.href = "index.html"; 
-        
-    });
-    
-    document.getElementById("about").addEventListener("click", () => {
-        window.location.href= "Assests/about.html";
-    });
-    
-    document.getElementById("login").addEventListener("click", () => {
-        window.location.href = "Assests/login_page.html"; 
-    });
+        document.getElementById("home").addEventListener("click", () => {
+            window.location.href = "index.html"; 
+            
+        });
+
+        document.getElementById("about").addEventListener("click", () => {
+            window.location.href= "Assests/about.html";
+        });
+
+        document.getElementById("login").addEventListener("click", () => {
+            window.location.href = "Assests/login_page.html"; 
+        });
     </script>
 </body>
 </html>
