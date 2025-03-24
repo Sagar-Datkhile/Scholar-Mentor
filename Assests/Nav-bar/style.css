@@ -34,10 +34,13 @@ header{
 
 .logo>h1{
     margin-bottom: 1rem;
+    margin-left: 5rem;
+    font-weight: bold;
     position: absolute;
     top: 21px;
     display: flex;
     align-self: center;
+    
 
 }
 .navigation-bar{

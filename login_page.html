@@ -44,14 +44,16 @@
                     <input type="password" placeholder="Password" required>
                     <input type="text" placeholder="PRN No" required>
                     <select required>
-                        <option value="">Select Gender</option>
+                        <option value="Select Gender">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>
                     </select>
                     <br>
                     
-                    <input placeholder="Date of Birth" type="number" required>
+                    <!-- <input placeholder="Date of Birth" value="Date" type="date" required> -->
+                    <input type="date" onfocus="this.type='date'" onblur="if(!this.value) this.type='text'" placeholder="Date Of Birth" required>
+
                     <div class="AluStu_tag">
                     <label><input type="radio" name="status" value="passout" id="passout">Alumni</label>
                     

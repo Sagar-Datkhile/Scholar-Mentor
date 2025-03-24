@@ -1,3 +1,29 @@
+.content{
+            padding-left: 8rem;
+            padding-top: 5rem;
+            width: 74.5rem;
+
+        }
+
+.content>h1{
+    font-size: 2.5rem;
+}
+p{
+    font-size: larger;
+
+}
+.bulletpts{
+    margin-left: 3rem;
+    margin-top: -1rem;
+    font-size: larger;
+
+}
+.bolder{
+    /* font-style: oblique; */
+    /* font-size: x-large; */
+    font-weight: bold;
+}
+
 .contact-section{
     
     margin: 0;
@@ -8,7 +34,7 @@
     justify-content: center;
     align-items: center;
     height: fit-content;
-    width: fit-content;
+    width: 50rem;
 }
 
 /* Contact Section */
@@ -19,7 +45,7 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
     /* max-width: 400px; */
-    width: fit-content;
+    width: 50rem;
 }
 
 .contact-section h2 {
@@ -39,7 +65,7 @@
 }
 
 input, textarea {
-    width: 100%;
+    width: 45rem;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -76,6 +102,8 @@ input:focus, textarea:focus {
     font-size: 14px;
     color: green;
 }
+
+
 
 /* Fade-in Animation on Page Load */
 @keyframes fadeIn {

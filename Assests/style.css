@@ -33,6 +33,7 @@ header{
 
 .logo>h1{
     margin-bottom: 1rem;
+    margin-left: 5rem;
     position: absolute;
     top: 21px;
     display: flex;
@@ -84,6 +85,7 @@ font-size: 16px;
 /* ********************************* */
 main{
     /* height: calc(100vh - 100px); */
+    margin-left: 5rem;
     
    
 

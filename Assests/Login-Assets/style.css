@@ -1,26 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+*{
+    font-weight: 200;
+}
+
 main {
     display: flex;
     justify-content: center;
     align-items: center;
     /* height: calc(100vh - 60px) ; */
     height: 100vh;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); 
+    /* background: linear-gradient(135deg, #6a11cb, #2575fc);  */
     background-image: url(./alumni1.jpg);    
-    background-size:cover 
-}
-
-body{
-    /* display: flex;
-    justify-content: center;
-    align-items: center; 
-    height: 100vh; */
-    /* background: linear-gradient(135deg, #6a11cb, #2575fc); */
+    /* background: url(./alumni1.jpg) center/cover no-repeat; */
     
-    
-    background-size:cover;
+    /* background-color: white; */
+    background-size:cover; 
 }
-
 .container {
     width: 350px;
     display: flex;
@@ -56,26 +51,19 @@ body{
     color:brown;
     
 }
-input{
-    width: 73%;
-    /* width:200px; */
+input,select{
+    width: 80%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid ;
+    border: 2px solid slategray ;
     border-radius: 5px;
 
 }
-input:active{
-    outline:    1px solid  lightgreen;
+
+input:focus, select:focus{
+    outline-color: #007bff;
 }
-select{
-    width:80%;
-    padding: 10px;
-    margin: 10px 0;
-    /* border: 1px solid #b72323; */
-    border: 1px solid ;
-    border-radius: 5px;
-}
+
 #btn{
     background: yellowgreen;
     color: white;
