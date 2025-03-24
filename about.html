@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./Assests\about_style.css">
     <link rel="stylesheet" href="./Assests/Nav-bar/style.css">
     <script src="Assests\about_script.js"></script>
+    <script src="Assests\Contact_us\server.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
 </head>
 <body>
     <header>
@@ -84,5 +87,34 @@ document.getElementById("about").addEventListener("click", () => {
 document.getElementById("login").addEventListener("click", () => {
     window.open("login_page.html", "_self"); 
 });
+
+// Email service
+        (function(){
+            emailjs.init("PZTUbzJ-pRUw1UeTF"); 
+        })();
+
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from reloading
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            const params = {
+                from_name: name,
+                from_email: email,
+                message: message,
+            };
+
+            emailjs.send("service_bis20bb", "template_e6156hc", params)
+                .then(response => {
+                    alert("Email sent successfully!");
+                    document.getElementById("contactForm").reset();
+                })
+                .catch(error => {
+                    alert("Error sending email: " + error.text);
+                });
+        });
+    
 </script>
 </html>
