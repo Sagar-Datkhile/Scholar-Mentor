@@ -296,7 +296,7 @@
             <h1 class="introLine1">An Alumni Network</h1>
             <h1 ><span class="introLine2"></span></h1>
             <p class="introPara">At Scholar Mentor, we believe that graduation is not the end of your journey with us—it’s just the beginning of a lifelong connection. Our platform is designed to bring together alumni from across generations, fostering a vibrant community of professionals, mentors, and lifelong learners.</p><br>
-            <div class="get-started" onclick="showPopup()" >Get Started</div>
+            <div class="get-started" id="getStarted" onclick="showPopup()" >Get Started</div>
         </div> 
 
         <div class="main-image">
@@ -313,7 +313,7 @@
         <div class="form-container active" id="login-container">
             
             <form id="login-form-user">
-                <h2 style="color: #333;">Login</h2>
+                <h2 style="color: #333;">User Login</h2>
                 <input type="text" placeholder="Username" required>
                 <input type="password" placeholder="Password" required>
                 <br>
@@ -456,23 +456,35 @@
 });
 
     
-    var typed = new Typed(".introLine2",{
-        strings : [ "Career Growth","Networking Opportunities","Student-Alumni Engagement"],
-        typeSpeed : 30,
-        backSpeed : 30,
-        loop : true,
-    })
+
+  new Typed(".introLine2", {
+    strings: ["Career Growth", "Networking Opportunities", "Student-Alumni Engagement"],
+    typeSpeed: 30,
+    backSpeed: 30,
+    loop: true,
+});
+
 
     // Navigation Bar
-    document.getElementById("home").addEventListener("click", function homePage() {
+    function homePage() {
         window.location.href = "index.html"; 
-        
-    });
+    }
 
-    document.getElementById("about").addEventListener("click", () => {
+    function aboutPage() {
         window.location.href= "about.html";
-    });
+    }
 
+    document.getElementById("home").addEventListener("click", homePage);
+    document.getElementById("about").addEventListener("click", aboutPage);
+
+    document.addEventListener("DOMContentLoaded", () => {
+    // Check for the flag
+    if (localStorage.getItem("openLoginPopup") === "true") {
+        localStorage.removeItem("openLoginPopup"); // Remove so it doesn't happen again
+        // Trigger the Get Started button
+        document.querySelector("#getStarted").click();
+    }
+});
 
 
 

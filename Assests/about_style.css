@@ -1,7 +1,19 @@
+body{
+    height: 100vh;
+}
+.container1{
+    height: 100vh;
+
+}
+
+.container{
+    width: max-content;
+}
 .content{
             padding-left: 8rem;
             padding-top: 5rem;
             width: 74.5rem;
+            
 
         }
 
@@ -78,9 +90,19 @@ input:focus, textarea:focus {
     outline: none;
 }
 
+#contactForm{
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+}
+#contactForm>h1{
+    margin: auto;
+}
+
 /* Button */
 .submit{
-    background-color: #007bff;
+    background-color: #7E22CE;  
+    box-shadow: 0px 4px 10px rgba(126, 34, 206, 0.4);   
     color: white;
     border: none;
     padding: 10px 15px;
@@ -92,7 +114,9 @@ input:focus, textarea:focus {
 }
 
 .submit:hover {
-    background-color: #0056b3;
+    background-color: #6819AB; 
+    /* box-shadow: 0px 6px 15px rgba(126, 34, 206, 0.6);  */
+
 }
 
 /* Success Message */

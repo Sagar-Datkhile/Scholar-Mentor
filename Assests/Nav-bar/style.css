@@ -43,6 +43,12 @@ header{
     
 
 }
+
+.logo>h1:hover{
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);    
+    background-color: transparent;
+   
+   }
 .navigation-bar{
     width: calc(100vw - 31rem);
     margin-right: 4rem;
