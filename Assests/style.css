@@ -40,6 +40,10 @@ header{
     align-self: center;
 
 }
+.logo>h1:hover{
+ text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);    background-color: transparent;
+
+}
 .navigation-bar{
     width: calc(100vw - 31rem);
     margin-right: 4rem;
@@ -152,10 +156,21 @@ main{
         box-shadow: 0px 3px 8px rgba(126, 34, 206, 0.5);
         transform: translateY(0); 
     }
-
+.content{
+    padding: 0;
+    display: flex;
+    max-width: 100vw;
+    margin-left: 5rem;
+    margin-top: -10rem;
+    flex-direction: row;
+    gap: 20rem;
+    justify-items: center;
+    align-items: center;
+    
+}
 .main-image>img{
     height: 30rem;
-    position: absolute;
+    /* position: absolute; */
     right: 10rem;
     top: 10rem;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), -3px -3px 10px rgba(0, 0, 0, 0.2);

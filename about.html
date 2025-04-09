@@ -14,7 +14,7 @@
 <body>
     <header>
         <div class="logo" id="logo">
-            <h1>Scholar Mentor</h1>
+            <h1 onclick="homePage()">Scholar Mentor</h1>
             
             
         </div>
@@ -22,7 +22,7 @@
             <button class="home" id="home">HOME</button>
             <button class="about" id="about">ABOUT</button>
             <!-- <button class="alumni" onclick="showSection('alumni')">CONTACT</button> -->
-            <button class="login signUp" id="login">LOGIN</button>
+            <button class="login signUp" id="login" >LOGIN</button>
             <!-- <button class="login signUp" onclick="showSection('login')">SIGN UP</button> -->
             </div>
     </header>
@@ -79,7 +79,9 @@ document.getElementById("home").addEventListener("click", () => {
     window.location.href = "index.html"; 
     
 });
-
+function homePage(){
+    window.location.href = "index.html";
+}
 document.getElementById("about").addEventListener("click", () => {
     window.location.href= "about.html";
 });

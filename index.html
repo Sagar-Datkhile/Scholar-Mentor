@@ -5,11 +5,279 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholar Mentor</title>
     <link rel="stylesheet" href="Assests\style.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+    *{
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        font-weight: 200;
+    }
+    body{
+        
+        margin: 0;
+        background: #f5f5f5;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color:transparent;
+      color: white;
+      padding: 10px 30px;
+    }
+    .logo>h1{
+        margin-bottom: 1rem;
+        color: black;
+        font-weight: bold;
+        margin-left: 3rem;
+        position: absolute;
+        top: 21px;
+        display: flex;
+        align-self: center;
+
+    }
+    
+    main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      /* padding: 50px; */
+      /* background-image: url('https://images.unsplash.com/photo-1581090700227-1e8d08ec6711'); */
+      background-image: url(./alumni1.jpg); 
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+    }
+        
+    .content{
+    width: fit-content;
+    background-color: var(--first-color-lighter);
+    margin-top: -12rem;
+}
+    .introLine1{
+    font-size: 2.25rem;
+    font-weight: 550;
+    line-height: 2.5rem;
+    margin-bottom: -0.55rem;
+}
+    .introLine2{
+    color: #7E22CE;
+    font-weight: 550;    
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.introPara{
+    width: 30rem;
+    color: #6B7280;
+    font-size: 16px;
+   
+}
+
+
+.get-started {
+    width: fit-content;
+    background-color: #7E22CE; 
+    color: white; 
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px; 
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    box-shadow: 0px 4px 10px rgba(126, 34, 206, 0.4); 
+    
+
+    }
+    .container {
+        width: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #dbe8d8;
+        padding: 20px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .form-container {
+        display: none;
+        flex-direction: column;
+        background: #dbe8d8;
+        padding: 15px;
+        border-radius: 8px;
+        transition: left 0.5s ease-in;
+    }
+    .active {
+        display: flex;
+    }
+    .hidden {
+        display: none;
+    }
+    #btn{
+        width: 80%;
+        /* width:200px; */
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #b72323;
+        border-radius: 5px;
+        color:brown;
+        
+    }
+    input,select{
+        width: 80%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 2px solid slategray ;
+        border-radius: 5px;
+    
+    }
+    
+    input:focus, select:focus{
+        outline-color: #007bff;
+    }
+    
+    #btn{
+        background: yellowgreen;
+        color: white;
+        border: none;
+        cursor: pointer;
+        
+    
+    }
+    
+    #btn:hover {
+        background: #218838;
+    }
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    
+    #passout,#ongoing{
+        width:15px;
+        
+       
+    }
+    .AluStu_tag{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+    }
+    @media screen and (max-width: 600px) {
+        body {
+            flex-direction: column;
+            height: auto;
+            padding: 10px;
+        }
+        .container {
+            width: 90%;
+            padding: 15px;
+        }
+        button, input, select {
+            width: 100%;
+        }
+        .AluStu_tag {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+    
+    /* Fade-in Animation on Page Load */
+    /* @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .container{
+        opacity: 0; 
+        animation: fadeIn 0.5s ease-in-out forwards;
+        animation-delay: 0.1s;
+    } */
+
+    /* Popup Styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .popup .form-container {
+      display: none;
+      flex-direction: column;
+    }
+
+    .form-container.active {
+      display: flex;
+    }
+   
+
+    .popup h2 {
+      text-align: center;
+      /* margin-bottom: 20px; */
+    }
+
+    .popup input,
+    .popup select {
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .popup button {
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup a {
+      color: #007bff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9998;
+    }
+
+    </style>
+    
 </head>
+
 <body>
     <header>
         <div class="logo" id="logo">
-            <h1>Scholar Mentor</h1>
+            <h1 onclick="homePage()">Scholar Mentor</h1>
             
             
         </div>
@@ -17,7 +285,7 @@
             <button class="home" id="home">HOME</button>
             <button class="about" id="about" >ABOUT</button>
             <!-- <button class="alumni" onclick="showSection('alumni')">CONTACT</button> -->
-            <button class="login signUp" id="login">LOGIN</button>
+            <button class="login signUp" id="login" onclick="showPopup()">LOGIN</button>
             <!-- <button class="login signUp" onclick="showSection('login')">SIGN UP</button> -->
             </div>
     </header>
@@ -28,26 +296,182 @@
             <h1 class="introLine1">An Alumni Network</h1>
             <h1 ><span class="introLine2"></span></h1>
             <p class="introPara">At Scholar Mentor, we believe that graduation is not the end of your journey with us—it’s just the beginning of a lifelong connection. Our platform is designed to bring together alumni from across generations, fostering a vibrant community of professionals, mentors, and lifelong learners.</p><br>
-            
+            <div class="get-started" onclick="showPopup()" >Get Started</div>
         </div> 
 
         <div class="main-image">
             <!-- Image from google -->
             <img src="Assests\alumni.jpg" alt="Alumni-image">
         </div>
-        <div class="get-started" >Get Started</div>
+        
+    </div>
+    
+    <!-- Popup Login Form -->
+    <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+    <div class="popup" id="popup">
+    <div class="container" id="container">
+        <div class="form-container active" id="login-container">
+            
+            <form id="login-form-user">
+                <h2 style="color: #333;">Login</h2>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <br>
+                <button id="btn" type="submit">Login</button>
+                <p>Login as <a href="#" data-target="login-admin-container">Admin</a></p>
+                <p><a href="#" data-target="forgot-password-container">Forgot Password?</a></p>
+                <p>Don't have an account? <a href="#" data-target="signup-container">Sign Up</a></p>
+            </form>
+        </div>
+        
+        <div class="form-container active" id="login-admin-container">
+            
+            <form id="login-form-admin">
+                <h2 style="color: #333;">Admin Login</h2>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <br>
+                <button id="btn" type="submit">Login</button>
+                <p>Login as <a href="#" data-target="login-container">User</a></p>
+                <p><a href="#" data-target="forgot-password-container">Forgot Password?</a></p>
+            </form>
+        </div>
+
+        <div class="form-container" id="signup-container">
+            <form id="signup-form">
+                <h2 style="color: #333;">Sign Up</h2>
+                <input type="text" placeholder="Username" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="text" placeholder="PRN No" required>
+                <select required>
+                    <option value="Select Gender">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <br>
+                <!-- <label for="dob">Date Of Birth</label> -->
+                <input id="dob" type="date" onfocus="this.type='date'" onblur="if(!this.value) this.type='text'" placeholder="Date Of Birth" required>
+
+                <div class="AluStu_tag">
+                <label><input type="radio" name="status" value="passout" id="passout">Alumni</label>
+                
+                <label><input type="radio" name="status" value="ongoing" id="ongoing">Student</label>
+                </div>
+                <div id="passout-fields" class="hidden">
+                    <input type="number" placeholder="Year of Passing">
+                    <select required>
+                        <option value="">Select Department</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="IT Engineering">IT Engineering</option>
+                        <option value="AI&DS Engineering">AI&DS Engineering</option>
+                        <option value="E&TC Engineering">E&TC Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        
+                    </select>
+                </div>
+                
+                <div id="ongoing-fields" class="hidden">
+                    <input type="number" placeholder="Year of Passing">
+                    <select required>
+                        <option value="">Select Department</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="IT Engineering">IT Engineering</option>
+                        <option value="AI&DS Engineering">AI&DS Engineering</option>
+                        <option value="E&TC Engineering">E&TC Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        
+                    </select>
+                </div>
+                
+                <button id="btn" type="submit">Sign Up</button>
+                <p>Already have an account? <a href="#" data-target="login-container">Login</a></p>
+            </form>
+        </div>
+
+        <div class="form-container" id="forgot-password-container">
+            <h2 style="color: #333;">Forgot Password</h2>
+            <form id="forgot-password-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button id="btn" type="submit">Send Reset Code</button>
+                <p>Remembered your password? <a href="#" data-target="login-container">Login</a></p>
+            </form>
+        </div>
+    </div>
     </div>
     </main>
 
-<script src="Assests\script.js"></script>
+
+
+<!-- JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script>
+    // JavaScript to control popup
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("overlay");
+    
+    function showPopup() {
+      popup.style.display = "flex";
+      overlay.style.display = "block";
+    }
+
+    function hidePopup() {
+      popup.style.display = "none";
+      overlay.style.display = "none";
+    }
+
+
+    // Optional: Close popup when pressing ESC key
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            hidePopup();
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("a[data-target]").forEach(link => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                document.querySelectorAll(".form-container").forEach(form => form.classList.remove("active"));
+                document.getElementById(link.getAttribute("data-target")).classList.add("active");
+            });
+        });
+    
+        document.getElementById("passout").addEventListener("change", function() {
+            document.getElementById("passout-fields").classList.remove("hidden");
+            document.getElementById("ongoing-fields").classList.add("hidden");
+        });
+        
+        document.getElementById("ongoing").addEventListener("change", function() {
+            document.getElementById("ongoing-fields").classList.remove("hidden");
+            document.getElementById("passout-fields").classList.add("hidden");
+        });
+    });
+    
     var typed = new Typed(".introLine2",{
         strings : [ "Career Growth","Networking Opportunities","Student-Alumni Engagement"],
         typeSpeed : 30,
         backSpeed : 30,
         loop : true,
     })
+
+    // Navigation Bar
+    document.getElementById("home").addEventListener("click", function homePage() {
+        window.location.href = "index.html"; 
+        
+    });
+
+    document.getElementById("about").addEventListener("click", () => {
+        window.location.href= "about.html";
+    });
+
+
+
+
 </script>
+
+<!-- <script src="Assests\script.js"></script> -->
+
 </body>
 </html>
