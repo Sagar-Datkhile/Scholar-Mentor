@@ -48,9 +48,8 @@
                         <option value="Other">Other</option>
                     </select>
                     <br>
-                    
-                    <!-- <input placeholder="Date of Birth" value="Date" type="date" required> -->
-                    <input type="date" onfocus="this.type='date'" onblur="if(!this.value) this.type='text'" placeholder="Date Of Birth" required>
+                    <!-- <label for="dob">Date Of Birth</label> -->
+                    <input id="dob" type="date" onfocus="this.type='date'" onblur="if(!this.value) this.type='text'" placeholder="Date Of Birth" required>
 
                     <div class="AluStu_tag">
                     <label><input type="radio" name="status" value="passout" id="passout">Alumni</label>
@@ -59,7 +58,6 @@
                     </div>
                     <div id="passout-fields" class="hidden">
                         <input type="number" placeholder="Year of Passing">
-                        <!-- <input type="text" placeholder="Department"> -->
                         <select required>
                             <option value="">Select Department</option>
                             <option value="Computer Engineering">Computer Engineering</option>
@@ -73,7 +71,6 @@
                     
                     <div id="ongoing-fields" class="hidden">
                         <input type="number" placeholder="Year of Passing">
-                        <!-- <input type="text" placeholder="Department"> -->
                         <select required>
                             <option value="">Select Department</option>
                             <option value="Computer Engineering">Computer Engineering</option>

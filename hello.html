@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pop-up Example</title>
+    <style>
+        /* CSS for the popup */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        /* Overlay background */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        /* Button styles */
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .close-btn {
+            background-color: #dc3545;
+            float: right;
+        }
+
+        .close-btn:hover {
+            background-color: #b02a37;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button to trigger popup -->
+    <button class="btn" onclick="showPopup()">Show Popup</button>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+
+    <!-- Popup content -->
+    <div class="popup" id="popup">
+        <h2>Popup Title</h2>
+        <p>This is a sample popup content. You can put anything here!</p>
+        <button class="btn close-btn" onclick="hidePopup()">Close</button>
+    </div>
+
+    <script>
+        // JavaScript to control popup
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+
+        // Optional: Close popup when pressing ESC key
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                hidePopup();
+            }
+        });
+    </script>
+</body>
+</html>
