@@ -314,7 +314,6 @@
             <button class="home" id="home">HOME</button>
             <button class="about" id="about" >ABOUT</button>
             <!-- <button class="alumni" onclick="showSection('alumni')">CONTACT</button> -->
-            <button class="connect" id="connect" >CONNECT</button>
             <button class="login signUp" id="login" onclick="showPopup()">LOGIN</button>
             <!-- <button class="login signUp" onclick="showSection('login')">SIGN UP</button> -->
             </div>
@@ -522,13 +521,9 @@
     function aboutPage() {
         window.location.href= "about.html";
     }
-    function connectPage() {
-        window.location.href= "connect.html";
-    }
 
     document.getElementById("home").addEventListener("click", homePage);
     document.getElementById("about").addEventListener("click", aboutPage);
-    document.getElementById("connect").addEventListener("click", connectPage);
 
     document.addEventListener("DOMContentLoaded", () => {
     // Check for the flag
