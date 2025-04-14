@@ -30,11 +30,46 @@ main {
 .form-container {
     display: none;
     flex-direction: column;
-    background: #dbe8d8;
+    /* background: #dbe8d8;
     padding: 15px;
     border-radius: 8px;
-    transition: left 0.5s ease-in;
+    transition: left 0.5s ease-in; */
+    background: rgba(255, 255, 255, 0.2);
+      /*background: white;*/
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      width: 320px;
+      text-align: center;
+    
 }
+.login-container input[type="text"],
+.login-container input[type="password"], 
+.login-container input[type="email"],
+.login-container input[type="date"],
+.login-container input[type="radio"],
+.login-container input[type="number"],
+.popup select{
+      width: 100%;
+      padding: 0px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      background: #f5f5f5;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .popup select:invalid {
+        color: gray; /* Placeholder color */
+      }
+      
+    .popup select option {
+        color: black; /* Normal option color */
+      }
+      
 .active {
     display: flex;
 }
@@ -52,7 +87,7 @@ main {
     
 }
 input,select{
-    width: 80%;
+    width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 2px solid slategray ;
@@ -111,20 +146,28 @@ a {
     }
 }
 
-/* Fade-in Animation on Page Load */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.popup input,
+.popup select {
+  padding: 12px;
+  margin: 10px 0;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: #f5f5f5;
+  font-size: 14px;
 }
 
-.container{
-    opacity: 0; 
-    animation: fadeIn 0.5s ease-in-out forwards;
-    animation-delay: 0.1s;
+.popup button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.popup button:hover {
+  background-color: #357ab8;
 }
