@@ -1,0 +1,323 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alumni Connect Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./Assests/Nav-bar/style.css">
+  <style>
+     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f9f7fd;
+    }
+
+    .alumni-container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+      width: 250px;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .profile-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+
+    .connect-btn,.on-off {
+      background: #7E22CE;;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .chat-container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      width: 30%;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.1);
+    }
+
+    .sidebar img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar h3 {
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .sidebar p {
+      margin: 0.2rem 0;
+      color: #666;
+    }
+
+    .sidebar ul {
+      padding-left: 1.2rem;
+      text-align: left;
+    }
+
+    .sidebar section {
+      margin-top: 1rem;
+    }
+
+    .sidebar section h4 {
+      margin: 0.8rem 0 0.4rem;
+      color: #7c3aed;
+    }
+
+    .chat-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.1);
+      overflow: hidden;
+    }
+
+    .chat-header {
+      padding: 1rem;
+      background: #7E22CE;;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background: #f3effd;
+    }
+
+    .message {
+      max-width: 70%;
+      padding: 0.8rem 1rem;
+      border-radius: 15px;
+      word-wrap: break-word;
+      margin-bottom: 1rem;
+    }
+
+    .message.student {
+      align-self: flex-end;
+      background: #7E22CE;;
+      color: white;
+      border-bottom-right-radius: 0;
+    }
+
+    .message.alumni {
+      align-self: flex-start;
+      background: #e2dfff;
+      color: #333;
+      border-bottom-left-radius: 0;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 1rem;
+      border-top: 1px solid #ddd;
+      background: #fff;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .chat-input button {
+      margin-left: 1rem;
+      background: #7E22CE;;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <div class="logo" id="logo">
+        <h1 onclick="homePage()">Scholar Mentor</h1>
+        
+        
+    </div>
+    <div class = "navigation-bar">
+        <button class="home" id="home">HOME</button>
+        <button class="about" id="about">ABOUT</button>
+        <button class="connect" id="connect" >CONNECT</button>
+        <button class="login signUp" id="login">LOGIN</button>
+
+    </div>
+</header>
+
+
+<div class="alumni-container" id="alumniSection">
+  <div class="cards">
+    <div class="card" data-name="Kartik Borse" data-role="Software Engineer" data-img="images/alumni1.jpg" data-exp='["Software Engineer at Google (2016-2020)", "Facebook (2020-2023)"]' data-edu="PVGCOEN - B.E.Computer Science (2011-2015)">
+      <img src="images/alumni1.jpg" alt="Kartik Borse" class="profile-img">
+      <h3>Kartik Borse</h3>
+      <p class="grad-year">Computer Engineering 2015</p>
+      <p class="position">Software Engineer at Facebook Tech Co.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+      <button class="connect-btn">Connect</button>
+    </div>
+    <div class="card" data-name="Sagar datkhile" data-role="Data Analyst" data-img="images/alumni2.jpg" data-exp='["Data Analyst at Deloitte (2018-2021)", "Senior Analyst at Accenture (2021-Present)"]' data-edu="PVGCOEN - B.E. IT (2014-2018)">
+      <img src="images/alumni2.jpg" alt="Sagar datkhile" class="profile-img">
+      <h3>Sagar datkhile</h3>
+      <p class="grad-year">IT Engineering 2018</p>
+      <p class="position">Senior Analyst at Accenture</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+      <button class="connect-btn">Connect</button>
+    </div>
+    <div class="card"  data-edu="PVGCOEN - B.E. Electronics (2010-2014)">
+      <img src="images/alumni3.jpg" alt="" class="profile-img">
+      <h3></h3>
+      <p class="grad-year">Electronics Engineering 2014</p>
+      <p class="position"></p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+      <button class="connect-btn">Connect</button>
+    </div> 
+     
+  </div>
+</div>
+<div class="chat-container" id="chatContainer" style="display: none;">
+  <div class="sidebar">
+    <img src="" id="chatAvatar" alt="Alumni Avatar">
+    <h3 id="chatName"></h3>
+    <p id="chatRole"></p>
+    <h4>Education:</h4>
+    <p id="chatEducation"></p>
+    <h4>Experience:</h4>
+    <ul id="chatExperience"></ul>
+    <h4>Achievements:</h4>
+    <ul>
+      <li>Google Developer Expert - 2021</li>
+      <li>Best Innovator Award at Facebook</li>
+    </ul>
+    <button class="on-off"onclick="startChat()">Start Chat</button>
+  </div>
+  <div class="chat-box">
+    <div class="chat-header">
+      <span>Chat Room</span>
+      <button class="on-off" onclick="closeChat()">Back</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input" id="chatInput" style="display: none;">
+      <input type="text" placeholder="Type your message...">
+      <button>Send</button>
+    </div>
+  </div>
+</div>
+<script>
+  const connectButtons = document.querySelectorAll(".connect-btn");
+  const chatContainer = document.getElementById("chatContainer");
+  const alumniSection = document.getElementById("alumniSection");
+  const chatName = document.getElementById("chatName");
+  const chatRole = document.getElementById("chatRole");
+  const chatAvatar = document.getElementById("chatAvatar");
+  const chatExperience = document.getElementById("chatExperience");
+  const chatEducation = document.getElementById("chatEducation");
+
+  connectButtons.forEach(btn => {
+  btn.onclick = () => {
+    const c = btn.closest(".card");
+    chatName.textContent = c.dataset.name;
+    chatRole.textContent = c.dataset.role;
+    chatAvatar.src = c.dataset.img;
+    chatEducation.textContent = c.dataset.edu;
+    chatExperience.innerHTML = JSON.parse(c.dataset.exp)
+      .map(item => `<li>${item}</li>`).join("");
+
+    alumniSection.style.display = "none";
+    chatContainer.style.display = "flex";
+  };
+});
+
+
+  function closeChat() {
+    chatContainer.style.display = "none";
+    document.getElementById("chatInput").style.display = "none";
+    document.getElementById("chatMessages").style.display = "none";
+    alumniSection.style.display = "block";
+  }
+
+  function startChat() {
+    document.getElementById("chatInput").style.display = "flex";
+    document.getElementById("chatMessages").style.display = "block";
+  }
+  function homePage() {
+        window.location.href = "index.html"; 
+    }
+
+    function aboutPage() {
+        window.location.href= "about.html";
+    }
+
+    function goToHomeAndOpenLogin() {
+    localStorage.setItem("openLoginPopup", "true");
+    // Redirect to homepage
+    window.location.href = "index.html";
+    }
+    document.getElementById("login").addEventListener("click", goToHomeAndOpenLogin);
+    document.getElementById("home").addEventListener("click", homePage);
+    document.getElementById("about").addEventListener("click", aboutPage);
+</script>
+</body>
+</html>
