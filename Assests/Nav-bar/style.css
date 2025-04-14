@@ -1,12 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-
-header{
+* { 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     background-color: whitesmoke;
+    
+}
+
+header{
     height: 60px;
     margin-top: 20px;
     display: flex;
@@ -34,7 +37,7 @@ header{
     margin-left: 5rem;
     font-weight: bold;
     position: absolute;
-    top: 5px;
+    top: 21px;
     display: flex;
     align-self: center;
     
