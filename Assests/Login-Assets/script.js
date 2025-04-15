@@ -31,18 +31,24 @@ signupForm.addEventListener("submit", async (e) => {
 
   const email = signupForm.querySelector('input[type="email"]').value;
   const password = signupForm.querySelector('input[type="password"]').value;
-  const username = signupForm.querySelector('input[placeholder="Username"]').value;
+  const username = signupForm.querySelector('input[placeholder="Email"]').value;
   const prn = signupForm.querySelector('input[placeholder="PRN No"]').value;
   const gender = document.getElementById("gender").value;
   const dob = document.getElementById("dob").value;
   const status = signupForm.querySelector('input[name="status"]:checked').value;
   const year = signupForm.querySelector('input[placeholder="Year of Passing"]').value;
-  const department = signupForm.querySelectorAll('select#department')[0].value;
+  const department = document.querySelector('select#department').value;
 
-  // Step 1: Sign up using Supabase Auth
   const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
     email,
     password,
+    options: {
+      data: {
+        username: username, 
+        prn_no:prn,
+        // pass:password  ==> Never Practice this, never store password on normal text format
+      }
+    }
   });
 
   if (signUpError) {
@@ -50,12 +56,16 @@ signupForm.addEventListener("submit", async (e) => {
     return;
   }
 
-  // Step 2: Insert full profile in user_profiles
-  const user_id = signUpData.user.id;
+  const user = signUpData.user;
 
+  if (!user) {
+    alert("Please check your email to confirm your account before proceeding.");
+    return;
+  }
+  const user_id = signUpData.user.id;
   const { error: insertError } = await supabase.from("user_profiles").insert([
     {
-      id: user_id,           // Should match auth.users.id
+      id: user_id,
       username: username,
       prn: prn,
       gender: gender,
@@ -74,9 +84,6 @@ signupForm.addEventListener("submit", async (e) => {
   alert("Sign up successful!");
   window.location.href = "Assests/About-Assets/about.html";
 });
-
-  
-
   
 // User-Login with Supabase
 document.getElementById('login-form-user').addEventListener('submit', async (e) => {
