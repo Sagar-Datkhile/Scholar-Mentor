@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholar Mentor</title>
-    <link rel="stylesheet" href="./Assests\about_style.css">
-    <link rel="stylesheet" href="./Assests/Nav-bar/style.css">
-    <script src="Assests\about_script.js"></script>
-    <script src="Assests\Contact_us\server.js"></script>
+    <link rel="stylesheet" href="./about_style.css">
+    <link rel="stylesheet" href="../Nav-bar/style.css">
+    <script src="./about_script.js"></script>
+    <!-- <script src="Assests\Contact_us\server.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <style>
@@ -214,7 +214,7 @@
 </body>
 <script>
     function homePage() {
-        window.location.href = "index.html"; 
+        window.location.href = "../../index.html"; 
     }
 
     function aboutPage() {
@@ -224,7 +224,7 @@
     function goToHomeAndOpenLogin() {
     localStorage.setItem("openLoginPopup", "true");
     // Redirect to homepage
-    window.location.href = "index.html";
+    window.location.href = "../../index.html";
     }
 document.getElementById("login").addEventListener("click", goToHomeAndOpenLogin);
 

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholar Mentor</title>
-    <link rel="stylesheet" href="Assests\style.css">
-    <link rel="stylesheet" href="Assests\Login-Assets\style.css">
+    <link rel="stylesheet" href="./Assests/Login-Assets/style.css">
+    <link rel="stylesheet" href="./Assests/Index-Assets/style.css">
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
     *{
@@ -42,9 +42,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      /* padding: 50px; */
-      /* background-image: url('https://images.unsplash.com/photo-1581090700227-1e8d08ec6711'); */
-      background-image: url(./alumni1.jpg); 
       background-size: cover;
       background-position: center;
       height: 100vh;
@@ -330,7 +327,7 @@
 
         <div class="main-image">
             <!-- Image from google -->
-            <img src="Assests\alumni.jpg" alt="Alumni-image">
+            <img src="./Assests/Img/alumni.jpg" alt="Alumni-image">
         </div>
         
     </div>
@@ -450,93 +447,9 @@
     </div>
     </main>
 
-
-
-<!-- JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script>
-    // JavaScript to control popup
-    const popup = document.getElementById("popup");
-    const overlay = document.getElementById("overlay");
-    
-    function showPopup() {
-      popup.style.display = "flex";
-      overlay.style.display = "block";
-    }
-
-    function hidePopup() {
-      popup.style.display = "none";
-      overlay.style.display = "none";
-    }
-
-
-    // Optional: Close popup when pressing ESC key
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "Escape") {
-            hidePopup();
-        }
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("a[data-target]").forEach(link => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      const targetId = link.getAttribute("data-target");
-
-      // Hide all form containers
-      document.querySelectorAll(".form-container").forEach(form => form.classList.remove("active"));
-
-      // Show the selected form container
-      document.getElementById(targetId).classList.add("active");
-    });
-  });
-
-  // Alumni/Student toggle
-    document.getElementById("passout").addEventListener("change", function() {
-    document.getElementById("passout-fields").classList.remove("hidden");
-    document.getElementById("ongoing-fields").classList.add("hidden");
-  });
-
-    document.getElementById("ongoing").addEventListener("change", function() {
-    document.getElementById("ongoing-fields").classList.remove("hidden");
-    document.getElementById("passout-fields").classList.add("hidden");
-  });
-});
-
-    
-
-  new Typed(".introLine2", {
-    strings: ["Career Growth", "Networking Opportunities", "Student-Alumni Engagement"],
-    typeSpeed: 30,
-    backSpeed: 30,
-    loop: true,
-});
-
-
-    // Navigation Bar
-    function homePage() {
-        window.location.href = "index.html"; 
-    }
-
-    function aboutPage() {
-        window.location.href= "about.html";
-    }
-
-    document.getElementById("home").addEventListener("click", homePage);
-    document.getElementById("about").addEventListener("click", aboutPage);
-
-    document.addEventListener("DOMContentLoaded", () => {
-    // Check for the flag
-    if (localStorage.getItem("openLoginPopup") === "true") {
-        localStorage.removeItem("openLoginPopup"); // Remove so it doesn't happen again
-        // Trigger the Get Started button
-        document.querySelector("#getStarted").click();
-    }
-});
-
-</script>
-
-<!-- <script src="Assests\script.js"></script> -->
+<script src="./Assests/Index-Assets/script.js"></script>
+<script src="./Assests/Login-Assets/script.js"></script>
 
 </body>
 </html>

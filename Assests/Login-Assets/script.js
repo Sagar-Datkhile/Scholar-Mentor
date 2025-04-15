@@ -18,3 +18,4 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("passout-fields").classList.add("hidden");
     });
 });
+
