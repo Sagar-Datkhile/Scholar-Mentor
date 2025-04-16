@@ -104,24 +104,25 @@
 
 
                 <div class="AluStu_tag">
-                <label><input type="radio" name="status" value="Alumni" id="passout">Alumni</label>
+                <!-- <label><input type="radio" name="status" value="Alumni" id="passout">Alumni</label>
                 
-                <label><input type="radio" name="status" value="Student" id="ongoing">Student</label>
+                <label><input type="radio" name="status" value="Student" id="ongoing">Student</label> -->
+                <select class="selection" id="AluStu_tag" required >                    
+                    <option value="Student/Alumni" disabled selected hidden>Student/Alumni</option>
+                    <option value="Alumni">Alumni</option>
+                    <option value="Student">Student</option>
+                    
+                </select>
                 <style>
                     .AluStu_tag>label{
                         background-color: transparent;
                         text-decoration-color: #555;
                         color: #555;
-
-                    }
-
-                    #passout-fields, #ongoing-fields{
-                        background-color: transparent;
                     }
                 </style>
                 </div>
-                <div id="passout-fields" class="hidden">
-                    <input type="number" placeholder="Year of Passing">
+                <div id="passout-fields" style="background-color: transparent;">
+                    <input type="number" placeholder="Year of Passing" >
                     <select class="selection" id="department" required >                        
                         <option value="Department" disabled selected hidden>Select Department</option>
                         <option value="Computer Engineering">Computer Engineering</option>
@@ -134,7 +135,7 @@
                 
                 </div>
                 
-                <div id="ongoing-fields" class="hidden">
+                <!-- <div id="ongoing-fields" class="hidden">
                     <input type="number" placeholder="Year of Passing">
                     
                     <select class="selection" id="department" required >
@@ -147,7 +148,7 @@
                         
                     </select>
                     
-                </div>
+                </div> -->
                 
                 <button id="btn" type="submit">Sign Up</button>
                 <p>Already have an account? <a href="#" data-target="login-container">Login</a></p>

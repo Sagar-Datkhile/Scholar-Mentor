@@ -12,15 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    document.getElementById("passout").addEventListener("change", function() {
-        document.getElementById("passout-fields").classList.remove("hidden");
-        document.getElementById("ongoing-fields").classList.add("hidden");
-    });
     
-    document.getElementById("ongoing").addEventListener("change", function() {
-        document.getElementById("ongoing-fields").classList.remove("hidden");
-        document.getElementById("passout-fields").classList.add("hidden");
-    });
 });
 
 // Sign-Up with Database
@@ -31,13 +23,19 @@ signupForm.addEventListener("submit", async (e) => {
 
   const email = signupForm.querySelector('input[type="email"]').value;
   const password = signupForm.querySelector('input[type="password"]').value;
-  const username = signupForm.querySelector('input[placeholder="Email"]').value;
+  const username = signupForm.querySelector('input[placeholder="Username"]').value;
+  username.replace(/\s+/g, '');
+  username.toLowerCase();
+
   const prn = signupForm.querySelector('input[placeholder="PRN No"]').value;
   const gender = document.getElementById("gender").value;
   const dob = document.getElementById("dob").value;
-  const status = signupForm.querySelector('input[name="status"]:checked').value;
-  const year = signupForm.querySelector('input[placeholder="Year of Passing"]').value;
-  const department = document.querySelector('select#department').value;
+
+  const status = document.querySelector('#AluStu_tag').value;
+  
+  const yearRaw = signupForm.querySelector('input[placeholder="Year of Passing"]').value;
+  const year = yearRaw === "" ? null : Number(yearRaw);
+  const department = document.querySelector('#department').value;
 
   const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
     email,
@@ -62,27 +60,30 @@ signupForm.addEventListener("submit", async (e) => {
     alert("Please check your email to confirm your account before proceeding.");
     return;
   }
-  const user_id = signUpData.user.id;
-  const { error: insertError } = await supabase.from("user_profiles").insert([
-    {
-      id: user_id,
-      username: username,
-      prn: prn,
-      gender: gender,
-      dob: dob,
-      status: status,
-      department: department,
-      year_of_passing: year,
-    },
-  ]);
 
-  if (insertError) {
-    alert("Profile insertion failed: " + insertError.message);
-    return;
-  }
-
-  alert("Sign up successful!");
-  window.location.href = "Assests/About-Assets/about.html";
+    const { error: insertError } = await supabase.from("user_profiles").insert([
+      {
+        id: user.id,
+        username: username,
+        email:email,
+        prn_no: prn,
+        gender: gender,
+        dob: dob,
+        status: status,
+        passing_year:year,
+        department: department
+      },
+    ]);
+  
+    if (insertError) {
+      alert("Profile insertion failed: " + insertError.message);
+      return;
+    }
+  
+    alert("Sign up successful!");
+    window.location.href = "Assests/About-Assets/about.html";
+    
+  
 });
   
 // User-Login with Supabase
@@ -98,7 +99,11 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
     });
   
     if (error) {
+      if(error.message == "Email not confirmed"){
+          alert('Login Error: ' + 'Email is not verified yet');
+      }else{
       alert('Login Error: ' + error.message);
+      }
     } else {
       alert('Login successful!');
       // You can redirect or show user dashboard here
