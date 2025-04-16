@@ -24,15 +24,10 @@ signupForm.addEventListener("submit", async (e) => {
   const email = signupForm.querySelector('input[type="email"]').value;
   const password = signupForm.querySelector('input[type="password"]').value;
   const username = signupForm.querySelector('input[placeholder="Username"]').value;
-  username.replace(/\s+/g, '');
-  username.toLowerCase();
-
   const prn = signupForm.querySelector('input[placeholder="PRN No"]').value;
   const gender = document.getElementById("gender").value;
   const dob = document.getElementById("dob").value;
-
   const status = document.querySelector('#AluStu_tag').value;
-  
   const yearRaw = signupForm.querySelector('input[placeholder="Year of Passing"]').value;
   const year = yearRaw === "" ? null : Number(yearRaw);
   const department = document.querySelector('#department').value;
@@ -80,8 +75,9 @@ signupForm.addEventListener("submit", async (e) => {
       return;
     }
   
-    alert("Sign up successful!");
-    window.location.href = "Assests/About-Assets/about.html";
+    alert("Sign up successful!"+ "\nCheck email for confirmation.");
+    document.getElementById("signup-form").reset();
+    window.location.href = "index.html";
     
   
 });
@@ -111,13 +107,11 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
   }); 
 
 //   Admin Login - Supabase 
-
-
-  async function loginAdmin(event) {
+    document.getElementById('login-form-admin').addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const username = document.getElementById('admin-username').value.trim();
-    const password = document.getElementById('admin-password').value.trim();
+    const username = document.getElementById('admin-username').value;
+    const password = document.getElementById('admin-password').value;
 
     const { data, error } = await supabase
       .from('admin_profiles')
@@ -134,7 +128,7 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
       alert("Welcome Admin!");
       window.location.href = '/admin-dashboard.html';
     }
-  }
+  });
 
   //Protect Admin Dashboard
   // if (localStorage.getItem('admin_logged_in') !== 'true') {
@@ -149,9 +143,6 @@ function logoutAdmin() {
     window.location.href = "/index.html";
   }
 
-  // Attach to admin form
-  document.getElementById('login-form-admin').addEventListener('submit', loginAdmin);
-  
 
 
 
