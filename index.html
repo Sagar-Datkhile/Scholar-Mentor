@@ -141,8 +141,11 @@
         <div class="form-container" id="forgot-password-container">
             <form id="forgot-password-form" class="form">
                 <h2 style="color: #333; font-weight: 550;">Forgot Password</h2>
-                <input type="email" placeholder="Enter your email" required>
-                <button id="btn" type="submit">Send Reset Code</button>
+                <input type="email" id="forgotemail" placeholder="Enter your email" required>
+                <input type="text" id="otp" placeholder="Enter OTP" required>
+                <input type="password" id="passWord" placeholder="New Password" required>
+                <button id="btnForget" type="submit">Send OTP</button>
+                <p id="forget-message" style="color: green;"></p>
                 <p>Remembered your password? <a href="#" data-target="login-container">Login</a></p>
             </form>
         </div>

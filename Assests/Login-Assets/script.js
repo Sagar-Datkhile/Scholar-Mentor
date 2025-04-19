@@ -120,7 +120,7 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
       if(error.message == "Email not confirmed"){
           // alert('Login Error: ' + 'Email is not verified yet');
           loginMsg.style.color = 'red';
-          loginMsg.innerText = "Login Error: ' + 'Email is not verified yet";
+          loginMsg.innerText = "Login Error: Email is not verified yet";
           setTimeout(() => {
             loginMsg.innerText = "";
           }, 4000);
@@ -150,13 +150,13 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
     document.getElementById('login-form-admin').addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const username = document.getElementById('admin-username').value;
+    const email = document.getElementById('admin-username').value;
     const password = document.getElementById('admin-password').value;
 
     const { data, error } = await supabase
       .from('admin_profiles')
       .select('*')
-      .eq('username', username)
+      .eq('email', email)
       .eq('password', password) // use hashed password in production
       .single();
 
@@ -168,7 +168,6 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
 
       localStorage.setItem('admin_logged_in', 'true');
       localStorage.setItem('admin_username', data.username);
-      // alert("Welcome Admin!");
       
       
       setTimeout(() => {
@@ -177,7 +176,7 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
       }, 1500);
       
     }else{
-      // alert("Invalid admin credentials.");
+      
       adminMsg.style.color = 'red';
       if(error.message){
         adminMsg.innerText = "Invalid Credential!";
@@ -204,23 +203,90 @@ function logoutAdmin() {
 
 
 
-
-
-
-
-
 //   Forgot Password with Supabase
-document.getElementById('forgot-password-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
+//   document.getElementById('forgot-password-form').addEventListener('submit', async (e) => {
+//     e.preventDefault();
   
-    const email = e.target.querySelector('input').value;
-  
-    const { data, error } = await supabase.auth.resetPasswordForEmail(email);
-  
-    if (error) {
-      alert('Error: ' + error.message);
-    } else {
-      alert('Reset email sent! Check your inbox.');
-    }
-  });
+//     const emailv = document.getElementById("forgotemail").value;
+//     const oTP = document.getElementById("otp").value;
+//     const newPassword = document.getElementById("passWord").value;
+
+//     const { data, error } = await supabase
+//       .from('user_profiles')
+//       .select('*')
+//       .eq('email', email)
+//       .single();
+//       const forgetMsg = document.getElementById("forget-message");
+//       if(!data){
+//         forgetMsg.style.color = 'red';
+//         forgetMsg.innerText = "Email not found in database!";
+//         setTimeout(() => {
+//           forgetMsg.innerText = "";
+//         }, 4000);
+//       }else {
+            
+//             // alert('Reset code sent! Check your inbox.');
+
+//             const email = document.getElementById("forgotemail");
+//             const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit
+//             const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 mins
+//             const { error: insertError } = await supabase.from("reset_otps").insert([
+//               {
+//                 email :email,
+//                 otp : otp,
+//                 expires_at:expiresAt
+//               },
+//             ]);
+          
+
+// // await sendEmail(email, `Your reset code is: ${otp}`);
+
+
+//     // Email Service
+//         (function(){
+//           emailjs.init("PZTUbzJ-pRUw1UeTF"); 
+//       })();
+
+//       document.getElementById("btnForget").addEventListener("submit", function(event) {
+//           event.preventDefault(); // Prevent form from reloading
+
+          
+
+//           const params = {
+//               from_email: email,
+//               from_passcode: otp,
+//               from_time: expiresAt
+//           };
+
+//           emailjs.send("service_kyft5go", "template_tdkxbnc", params)
+//               .then(response => {
+//                   alert("OTP sent successfully!");
+//               })
+//               .catch(error => {
+//                   alert("Error sending OTP: " + error.text);
+                  
+//               });
+//       });
+
+//     const { data, error } = await supabase
+//   .from('reset_otps')
+//   .select('*')
+//   .eq('email', email)
+//   .eq('otp',otp)
+//   .single();
+
+// if (!data || data.otp !== userOtp || new Date(data.expires_at) < new Date()) {
+//   return { success: false, message: 'Invalid or expired OTP' };
+// }
+
+// // Update password
+// const { error: updateError } = await supabase.auth.admin.updateUserByEmail(email, {
+//   password: newPassword
+// });
+
+// // Optionally: delete OTP after use
+// await supabase.from('reset_otps').delete().eq('email', email);
+
+//     }
+//   });
   
