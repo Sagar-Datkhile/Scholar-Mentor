@@ -97,14 +97,14 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
           loginMsg.style.color = 'red';
           loginMsg.innerText = "Login Error: ' + 'Email is not verified yet";
           setTimeout(() => {
-            loginMsg.innerText.reset();
+            loginMsg.innerText = "";
           }, 3000);
       }else{
       // alert('Login Error: ' + error.message);
       loginMsg.style.color = 'red';
       loginMsg.innerText = "Login Error: "+ error.message;
       setTimeout(() => {
-        loginMsg.innerText.reset();
+        loginMsg.innerText = "";
       }, 3000);
 
       }
@@ -114,8 +114,9 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
       
       setTimeout(() => {
         window.location.href= "Assests/Dashboard/Dashboard-user.html";    
+        document.getElementById('login-form-user').reset();
       }, 1500);
-      document.getElementById('login-form-user').reset();
+      
       
       // loginMsg.innerText = "";
 
