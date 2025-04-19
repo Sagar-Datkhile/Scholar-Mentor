@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
 });
 
+const loginMsg = document.getElementById("login-message");
+
 // Sign-Up with Database
 const signupForm = document.getElementById("signup-form");
 
@@ -88,15 +90,36 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
       email,
       password
     });
-  
+    
     if (error) {
       if(error.message == "Email not confirmed"){
-          alert('Login Error: ' + 'Email is not verified yet');
+          // alert('Login Error: ' + 'Email is not verified yet');
+          loginMsg.style.color = 'red';
+          loginMsg.innerText = "Login Error: ' + 'Email is not verified yet";
+          setTimeout(() => {
+            loginMsg.innerText.reset();
+          }, 3000);
       }else{
-      alert('Login Error: ' + error.message);
+      // alert('Login Error: ' + error.message);
+      loginMsg.style.color = 'red';
+      loginMsg.innerText = "Login Error: "+ error.message;
+      setTimeout(() => {
+        loginMsg.innerText.reset();
+      }, 3000);
+
       }
     } else {
-      alert('Login successful!');
+      loginMsg.style.color = 'green';
+      loginMsg.innerText = "Login successful!";
+      
+      setTimeout(() => {
+        window.location.href= "Assests/Dashboard/Dashboard-user.html";    
+      }, 1500);
+      document.getElementById('login-form-user').reset();
+      
+      // loginMsg.innerText = "";
+
+      
       // You can redirect or show user dashboard here
     }
   }); 
@@ -122,6 +145,7 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
       localStorage.setItem('admin_username', data.username);
       alert("Welcome Admin!");
       window.location.href = '/admin-dashboard.html';
+      document.getElementById('login-form-admin').reset();
     }
   });
 

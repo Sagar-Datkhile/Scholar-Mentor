@@ -1,0 +1,116 @@
+header {
+    height: 70px;
+    /* margin-top: 10px; */
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4rem;
+    border-bottom: 1px solid lightgray;
+    background-color: transparent;
+  }
+  
+  .logo {
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .logo > h1 {
+    margin: 0;
+    margin-left: 5rem;
+
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #222;
+    background-color: transparent;
+  }
+  
+  .logo > h1:hover {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .navigation-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    height: 100%;
+  }
+  
+  .navigation-bar > .search-container {
+    display: flex;
+    align-items: center;
+    width: 30rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px 10px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+    margin-right: 1.7rem;
+  }
+  
+  .navigation-bar > .search-container:focus-within {
+    box-shadow: 0 0 0 1.2px #0078D4;
+    border-color: #0078D4;  
+  }
+  
+  .search-container input {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 6px;
+    font-size: 14px;
+    width: 26rem;
+    cursor: pointer;
+  }
+  
+  .search-container .material-symbols-outlined {
+    font-size: 20px;
+    color: #555;
+    margin-right: 6px;
+    
+  }
+  
+  .navigation-bar > .home{
+    border-bottom: 2px solid #6819AB;
+
+  }
+  .navigation-bar > button {
+    background-color: transparent;
+    font-weight: 500;
+    padding: 6px 14px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    /* transition: all 0.2s ease-in-out; */
+  }
+  
+  .navigation-bar > button:hover {
+    /* color: #8490ff; */
+    color: #7E22CE;
+    /* border-bottom: 1.5px solid #6819AB; */
+  }
+  
+  .navigation-bar > button:active {
+    /* border-bottom: 2px solid #6819AB; */
+    color: #7E22CE;
+  }
+  
+  .logOut {
+    background-color: red;
+    color: red;
+    border-radius: 8px;
+    padding: 6px 14px !important;
+    font-weight: 600;
+  }
+  .logOut:hover{
+    /* background-color: red; */
+    color: red;
+  }
+
+  .logOut:active{
+    color: red;
+  }
+  

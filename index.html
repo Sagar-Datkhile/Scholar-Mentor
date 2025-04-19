@@ -10,8 +10,6 @@
     <!-- Database for Login -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script>
-    //   const SUPABASE_URL = ;
-    //   const SUPABASE_ANON_KEY = ;
       const supabase = window.supabase.createClient("https://naecognnktiibvkwfhks.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5hZWNvZ25ua3RpaWJ2a3dmaGtzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2OTY0NzYsImV4cCI6MjA2MDI3MjQ3Nn0.r1IGt9Hx4-dr4lWpP0b9XX-pwoVRjzlMyys_IVZ8opY");
     </script>
     
@@ -57,12 +55,13 @@
     <div class="container" id="container">
         <div class="form-container active" id="login-container">
             
-            <form id="login-form-user">
+            <form id="login-form-user" class="form">
                 <h2 style="color: #333; font-weight: 550;">User Login</h2>
                 <input type="text" placeholder="Email" required>
                 <input type="password" placeholder="Password" required>
                 <br>
                 <button id="btn" type="submit">Login</button>
+                <p id="login-message" style="color: green;"></p>
                 <p >Login as <a href="#" data-target="login-admin-container">Admin</a></p>
                 <p><a href="#" data-target="forgot-password-container">Forgot Password?</a></p>
                 <p>Don't have an account? <a href="#" data-target="signup-container">Sign Up</a></p>
@@ -72,19 +71,20 @@
         
         <div class="form-container" id="login-admin-container">
             
-            <form id="login-form-admin">
+            <form id="login-form-admin" class="form">
                 <h2 style="color: #333; font-weight: 550;">Admin Login</h2>
                 <input type="text" id="admin-username" placeholder="Username" required>
                 <input type="password" id="admin-password" placeholder="Password" required>
                 <br>
                 <button id="btn" type="submit">Login</button>
+                <p id="login-message" style="color: green;"></p>
                 <p>Login as <a href="#" data-target="login-container">User</a></p>
                 <p><a href="#" data-target="forgot-password-container">Forgot Password?</a></p>
             </form>
         </div>
 
         <div class="form-container" id="signup-container">
-            <form id="signup-form">
+            <form id="signup-form" class="form">
                 <h2 style="color: #333; font-weight: 550;">Sign Up</h2>
                 <input type="text" placeholder="Username" required>
                 <input type="email" placeholder="Email" required>
@@ -136,12 +136,13 @@
                 </div>
                 
                 <button id="btn" type="submit">Sign Up</button>
+                <p id="signUp-message" style="color: green;"></p>
                 <p>Already have an account? <a href="#" data-target="login-container">Login</a></p>
             </form>
         </div>
 
         <div class="form-container" id="forgot-password-container">
-            <form id="forgot-password-form">
+            <form id="forgot-password-form" class="form">
                 <h2 style="color: #333; font-weight: 550;">Forgot Password</h2>
                 <input type="email" placeholder="Enter your email" required>
                 <button id="btn" type="submit">Send Reset Code</button>
