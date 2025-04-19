@@ -29,6 +29,8 @@ signupForm.addEventListener("submit", async (e) => {
   const year = yearRaw === "" ? null : Number(yearRaw);
   const department = document.querySelector('#department').value;
 
+  const signupMsg = document.getElementById("signUp-message");
+
   const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
     email,
     password,
@@ -42,14 +44,23 @@ signupForm.addEventListener("submit", async (e) => {
   });
 
   if (signUpError) {
-    alert("Sign up failed: " + signUpError.message);
+    signupMsg.style.color = 'red';
+    signupMsg.innerText = "Sign up failed: " + signUpError.message;
+      setTimeout(() => {
+        signupMsg.innerText = "";
+      }, 4000);
+
     return;
   }
 
   const user = signUpData.user;
 
   if (!user) {
-    alert("Please check your email to confirm your account before proceeding.");
+    signupMsg.style.color = 'red';
+      signupMsg.innerText = "Please check your email to confirm your account before proceeding.";
+      setTimeout(() => {
+        signupMsg.innerText = "";
+      }, 4000);
     return;
   }
 
@@ -68,13 +79,27 @@ signupForm.addEventListener("submit", async (e) => {
     ]);
   
     if (insertError) {
-      alert("Profile insertion failed: " + insertError.message);
+      
+      signupMsg.style.color = 'red';
+      signupMsg.innerText = "Profile insertion failed: " + insertError.message;
+      
+      setTimeout(() => {
+        signupMsg.innerText = "";
+      }, 4000);
       return;
     }
   
-    alert("Sign up successful!"+ "\nCheck email for confirmation.");
-    document.getElementById("signup-form").reset();
-    window.location.href = "index.html";
+
+    // If sign up successfully 
+    signupMsg.style.color = 'green';
+    signupMsg.innerText = "SignUp successful!";
+      
+      setTimeout(() => {
+        alert("Check email for confirmation.");
+        document.getElementById("signup-form").reset();
+        window.location.href = "index.html";
+      }, 1500);
+    
     
   
 });
@@ -98,14 +123,14 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
           loginMsg.innerText = "Login Error: ' + 'Email is not verified yet";
           setTimeout(() => {
             loginMsg.innerText = "";
-          }, 3000);
+          }, 4000);
       }else{
       // alert('Login Error: ' + error.message);
       loginMsg.style.color = 'red';
       loginMsg.innerText = "Login Error: "+ error.message;
       setTimeout(() => {
         loginMsg.innerText = "";
-      }, 3000);
+      }, 4000);
 
       }
     } else {
@@ -117,13 +142,9 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
         document.getElementById('login-form-user').reset();
       }, 1500);
       
-      
-      // loginMsg.innerText = "";
-
-      
-      // You can redirect or show user dashboard here
     }
   }); 
+
 
 //   Admin Login - Supabase 
     document.getElementById('login-form-admin').addEventListener('submit', async (event) => {
@@ -139,14 +160,32 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
       .eq('password', password) // use hashed password in production
       .single();
 
-    if (error || !data) {
-      alert("Invalid admin credentials.");
-    } else {
+      const adminMsg = document.getElementById("admin-message");
+    // if (error || !data) 
+    if(data) {
+      adminMsg.style.color = 'green';
+      adminMsg.innerText = "Login successful!";
+
       localStorage.setItem('admin_logged_in', 'true');
       localStorage.setItem('admin_username', data.username);
-      alert("Welcome Admin!");
-      window.location.href = '/admin-dashboard.html';
-      document.getElementById('login-form-admin').reset();
+      // alert("Welcome Admin!");
+      
+      
+      setTimeout(() => {
+        window.location.href = '/admin-dashboard.html';
+        document.getElementById('login-form-admin').reset();
+      }, 1500);
+      
+    }else{
+      // alert("Invalid admin credentials.");
+      adminMsg.style.color = 'red';
+      if(error.message){
+        adminMsg.innerText = "Invalid Credential!";
+      }
+      
+      setTimeout(() => {
+        adminMsg.innerText = "";
+      }, 4000);
     }
   });
 
