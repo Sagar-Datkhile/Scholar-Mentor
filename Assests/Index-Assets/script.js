@@ -31,7 +31,6 @@
         }
     });
 
-    const loginMsg = document.getElementById("login-message");
     document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("a[data-target]").forEach(link => {
     link.addEventListener("click", (event) => {
@@ -39,14 +38,9 @@
       const targetId = link.getAttribute("data-target");
 
       // Clear all forms before switching
-      
       document.querySelectorAll("form").forEach(form => form.reset());
-      
-
-    
       // Hide all form containers
       document.querySelectorAll(".form-container").forEach(form => form.classList.remove("active"));
-
       // Show the selected form container
       document.getElementById(targetId).classList.add("active");
     });
