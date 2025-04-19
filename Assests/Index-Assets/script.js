@@ -69,7 +69,13 @@
         // Trigger the Get Started button
         document.querySelector("#getStarted").click();
     }
+
+    if (localStorage.getItem("getStartedClicked") === "true") {
+      localStorage.removeItem("getStartedClicked"); // 
+      document.querySelector("#getStarted").click();
+  }
 });
+
 
 
 
