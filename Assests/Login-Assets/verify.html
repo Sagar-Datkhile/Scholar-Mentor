@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Verification</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f1f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      margin-top: -15rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .btn {
+      background-color: #2e7d32;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="verification">Email Verified Successfully</h2>
+    <p id="verificationPara">Click the button below to go to home page.</p>
+    <button class="btn" id="vefify-btn" onclick="verifyEmail()">Home Page</button>
+    <a href="https://sagar-datkhile.github.io/Scholar-Mentor/" id="link" style="display:none" >Home Page</a>
+  </div>
+
+  <script>
+    function verifyEmail() {
+        const linkBtn = document.getElementById("link")
+        linkBtn.click();
+    }
+        
+      
+  </script>
+</body>
+</html>

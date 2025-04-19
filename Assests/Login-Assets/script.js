@@ -39,7 +39,7 @@ signupForm.addEventListener("submit", async (e) => {
       data: {
         username: username, 
         prn_no:prn,
-        // pass:password  ==> Never Practice this, never store password on normal text format
+        pass:password //  ==> Never Practice this, never store password on normal text format
       }
     }
   });
