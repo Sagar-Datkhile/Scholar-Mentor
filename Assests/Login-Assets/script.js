@@ -232,7 +232,7 @@ btnForget.addEventListener('click', async (e) => {
         password: newPassword,
         user_metadata: {
           updated_at: new Date().toISOString(),
-          user_pass: newPassword
+          user_pass: newPassword,
         }
       });
     
