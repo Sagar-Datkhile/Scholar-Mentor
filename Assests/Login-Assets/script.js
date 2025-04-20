@@ -18,7 +18,7 @@ signupForm.addEventListener("submit", async (e) => {
 
   const email = signupForm.querySelector('input[type="email"]').value;
   const password = signupForm.querySelector('input[type="password"]').value;
-  const username = signupForm.querySelector('input[placeholder="Username"]').value;
+  const username = signupForm.querySelector('input[placeholder="Full Name"]').value;
   const prn = signupForm.querySelector('input[placeholder="PRN No"]').value;
   const gender = document.getElementById("gender").value;
   const dob = document.getElementById("dob").value;
