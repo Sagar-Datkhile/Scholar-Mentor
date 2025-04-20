@@ -203,90 +203,130 @@ function logoutAdmin() {
 
 
 
-//   Forgot Password with Supabase
-//   document.getElementById('forgot-password-form').addEventListener('submit', async (e) => {
-//     e.preventDefault();
+  // Forgot Password with Supabase
+
   
-//     const emailv = document.getElementById("forgotemail").value;
-//     const oTP = document.getElementById("otp").value;
-//     const newPassword = document.getElementById("passWord").value;
+  const otp_input = document.getElementById("otp");
+  const password_input = document.getElementById("passWord");
+  otp_input.style.display="none";
+  password_input.style.display="none";
+  const forgetMsg = document.getElementById("forget-message");
+  document.getElementById('btnForget').addEventListener('click', async (e) => {
+    e.preventDefault();
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById('btnForget').id ="verifyOTP";
+    });
+  
 
-//     const { data, error } = await supabase
-//       .from('user_profiles')
-//       .select('*')
-//       .eq('email', email)
-//       .single();
-//       const forgetMsg = document.getElementById("forget-message");
-//       if(!data){
-//         forgetMsg.style.color = 'red';
-//         forgetMsg.innerText = "Email not found in database!";
-//         setTimeout(() => {
-//           forgetMsg.innerText = "";
-//         }, 4000);
-//       }else {
-            
-//             // alert('Reset code sent! Check your inbox.');
+  const email = document.getElementById("forgotemail").value;
+  const otp_user = document.getElementById("otp").value;
+  const newPassword = document.getElementById("passWord").value;
+  
 
-//             const email = document.getElementById("forgotemail");
-//             const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit
-//             const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 mins
-//             const { error: insertError } = await supabase.from("reset_otps").insert([
-//               {
-//                 email :email,
-//                 otp : otp,
-//                 expires_at:expiresAt
-//               },
-//             ]);
+    const { data, error } = await supabase
+      .from('user_profiles')
+      .select('email')
+      .eq('email', email)
+      .single();
+      console.log("Email Fetch from user_profiles" + email);
+      if(!data){
+        forgetMsg.style.color = 'red';
+        forgetMsg.innerText = "Email not found in database!";
+        setTimeout(() => {
+          forgetMsg.innerText = "";
+        }, 4000);
+      }else {
+        otp_input.style.display="block";
+        document.addEventListener("DOMContentLoaded", () => {
+          document.getElementById("verifyOTP").innerText = "Verify OTP";
+        });
+       
+
+            // alert('Reset code sent! Check your inbox.');
+
+            const otp_original = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit
+            const expiresAt = new Date(Date.now() + 2 * 60 * 1000); // 2 mins
+            const { error: insertError } = await supabase.from("reset_otps").insert([
+              {
+                email :email,
+                otp : otp_original,
+                expires_at:expiresAt
+              },
+            ]);
           
 
-// // await sendEmail(email, `Your reset code is: ${otp}`);
+// Email Service
+
+(function() {
+  emailjs.init("PZTUbzJ-pRUw1UeTF");
+})();
+
+const params = {
+  email: email,
+  passcode: otp_original,
+  time: expiresAt.toLocaleString()
+};
+
+emailjs.send("service_kyft5go", "template_tdkxbnc", params)
+  .then(response => {
+    alert("OTP sent successfully!");
+  })
+  .catch(error => {
+    alert("Error sending OTP: " + error.text);
+  });
+      }});
 
 
-//     // Email Service
-//         (function(){
-//           emailjs.init("PZTUbzJ-pRUw1UeTF"); 
-//       })();
 
-//       document.getElementById("btnForget").addEventListener("submit", function(event) {
-//           event.preventDefault(); // Prevent form from reloading
+  document.getElementById('verifyOTP').addEventListener('click', async (e) => {
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById('verifyOTP').id = "resetPassword";
+    });
+    
+if (otp_input != otp_original || new Date(expiresAt) < new Date()) {
+  forgetMsg.style.color = 'red';
+  forgetMsg.innerText = "Invalid or Expired OTP!"
 
-          
+  setTimeout(() => {
+    forgetMsg.innerText = "";
+  }, 4000);
+  return { success: false };
+}
+  password_input.style.display="block";
+  document.getElementById('resetPassword').innerText="Reset Password";
+});
 
-//           const params = {
-//               from_email: email,
-//               from_passcode: otp,
-//               from_time: expiresAt
-//           };
+  document.getElementById('resetPassword').addEventListener('click', async (e) => {
+    e.preventDefault();
+// Update password
+const { error: updateError } = await supabase.auth.admin.updateUserByEmail(email, {
+  password: newPassword,
+  data: {
+    pass: newPassword, 
+    updated_at: new Date().toISOString()
 
-//           emailjs.send("service_kyft5go", "template_tdkxbnc", params)
-//               .then(response => {
-//                   alert("OTP sent successfully!");
-//               })
-//               .catch(error => {
-//                   alert("Error sending OTP: " + error.text);
-                  
-//               });
-//       });
+}});
 
-//     const { data, error } = await supabase
-//   .from('reset_otps')
-//   .select('*')
-//   .eq('email', email)
-//   .eq('otp',otp)
-//   .single();
+forgetMsg.style.color = 'green';
+forgetMsg.innerText = "Password reset successfully!";
+setTimeout(()=>{
+  forgetMsg.innerText = "";
+  document.getElementById("forgot-password-form").reset();
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('resetPassword').id = "btnForget";
+  });
 
-// if (!data || data.otp !== userOtp || new Date(data.expires_at) < new Date()) {
-//   return { success: false, message: 'Invalid or expired OTP' };
-// }
+},4000);
+});
 
-// // Update password
-// const { error: updateError } = await supabase.auth.admin.updateUserByEmail(email, {
-//   password: newPassword
-// });
 
-// // Optionally: delete OTP after use
-// await supabase.from('reset_otps').delete().eq('email', email);
 
-//     }
-//   });
+
+
+  
+
+
+
+    
+  
   
