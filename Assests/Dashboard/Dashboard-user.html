@@ -24,6 +24,7 @@
       <button class="explore" id="explore">CHATROOM</button>
       <button class="my-profile" id="my-profile">MY PROFILE</button>
       <button class="logOut" id="log-out">LOG OUT</button>
+      
     </div>
   </header>
 
@@ -58,7 +59,7 @@
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
-    <img src="${profile.avatar_url || './default-avatar.png'}" alt="${profile.username}" class="profile-img">
+    <img src="${profile.avatar_url || './defaultPhoto.png'}" alt="${profile.username}" class="profile-img">
     <h3>${profile.username || 'N/A'}</h3>
     <p class="position">${detail.designation || 'No Designation'}</p>
     <p class="skills">${detail.skills || 'No Skills'}</p>
