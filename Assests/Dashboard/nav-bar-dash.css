@@ -41,7 +41,7 @@ header {
   .navigation-bar > .search-container {
     display: flex;
     align-items: center;
-    width: 30rem;
+    width: 25rem;
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 6px 10px;
@@ -62,7 +62,7 @@ header {
     background: transparent;
     padding: 6px;
     font-size: 14px;
-    width: 26rem;
+    width: 23.5rem;
     cursor: pointer;
   }
   
@@ -79,6 +79,7 @@ header {
   }
   .navigation-bar > button {
     background-color: transparent;
+    width: max-content;
     font-weight: 500;
     padding: 6px 14px;
     border: none;
@@ -105,8 +106,7 @@ header {
     padding: 6px 14px !important;
     font-weight: 600;
   }
-  .logOut:hover{
-    /* background-color: red; */
+  .navigation-bar>.logOut:hover{
     color: red;
   }
 
