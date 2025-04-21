@@ -102,6 +102,19 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
   } else {
     loginMsg.style.color = 'green';
     loginMsg.innerText = "Login successful!";
+    const user = data.user;
+
+    const { data: profile } = await supabase
+    .from("user_profiles")
+    .select("id, email,")
+    .eq("id", user.id)
+    .single();
+
+  // Store info in localStorage
+  localStorage.setItem("userId", user.id);
+  localStorage.setItem("useremail", profile?.email || "UserEmail");
+
+
     setTimeout(() => {
       window.location.href = "Assests/Dashboard/Dashboard-user.html";
       document.getElementById('login-form-user').reset();
