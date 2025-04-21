@@ -7,7 +7,7 @@ if (userId) {
 } else {
   console.log("User not logged in");
 //   window.location.href= "index.html";
-window.location.replace("https://sagar-datkhile.github.io/Scholar-Mentor/");   
+window.location.replace("https://sagar-datkhile.github.io/Scholar-Mentor/index.html");
   
 }
 
@@ -19,7 +19,7 @@ async function logOut(){
       localStorage.removeItem("username");
   
       // Redirect to login page
-      window.location.replace("https://sagar-datkhile.github.io/index.html");
+      window.location.replace("https://sagar-datkhile.github.io/Scholar-Mentor/index.html");
     }
 }
     
