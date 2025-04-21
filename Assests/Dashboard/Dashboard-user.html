@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <title>Dashboard - Scholar Mentor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />  <link rel="stylesheet" href="./dashboard-user.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="./dashboard-user.css">
   <link rel="stylesheet" href="./nav-bar-dash.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
@@ -44,30 +47,25 @@
     return;
   }
 
-  const { data: details, error: detailsError } = await supabase.from("user_profiles").select("*");
-  if (detailsError) {
-    console.error("Error fetching user_details:", detailsError);
-    return;
-  }
 
   const container = document.getElementById("cardsContainer");
   container.innerHTML = "";
 
   profiles.forEach(profile => {
-  const detail = details.find(d => String(d.user_id) === String(profile.id)) || {};
+  // const detail = details.find(d => String(d.user_id) === String(profile.id)) || {};
 
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
     <img src="${profile.avatar_url || './defaultPhoto.png'}" alt="${profile.username}" class="profile-img">
     <h3>${profile.username || 'N/A'}</h3>
-    <p class="position">${detail.designation || 'No Designation'}</p>
-    <p class="skills">${detail.skills || 'No Skills'}</p>
-    <p class="grad-year">${detail.passing_year || ''}</p>
-    <p class="status">${detail.status || ''}</p>
+    <p class="position">Designation: ${profile.designation || 'Not updated'}</p>
+    <p class="skills">Skills: ${profile.skills || 'Not updated'}</p>
+    <p class="grad-year">Graduation Year: ${profile.passing_year || ''}</p>
+    <p class="status">Status: ${profile.status || ''}</p>
     <div class="social-icons">
-      <a href="${detail.linkedin || '#'}" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:${profile.email}"><i class="fas fa-envelope"></i></a>
+      <a href="${profile.linkedin || '#'}" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:${profile.email}" target="_blank"><i class="fas fa-envelope"></i></a>
     </div>
     <button class="connect-btn">Connect</button>
   `;
