@@ -15,12 +15,11 @@ window.location.replace("../../../index.html");
 async function logOut(){
     let confirmLogout = confirm("Are you sure you want to log out?");
     if (confirmLogout) {
-      // Clear user data from localStorage (optional)
       localStorage.removeItem("userId");
       localStorage.removeItem("username");
   
       // Redirect to login page
-      window.location.replace("../../../index.html");   
+      window.location.replace("https://sagar-datkhile.github.io/Scholar-Mentor/");   
     }
 }
     
