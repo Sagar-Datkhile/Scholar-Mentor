@@ -23,7 +23,7 @@ body {
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
-  width: 250px;
+  width: 280px;
   transition: transform 0.2s ease;
 }
 .card>*{
