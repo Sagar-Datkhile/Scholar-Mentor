@@ -116,7 +116,7 @@ document.getElementById('login-form-user').addEventListener('submit', async (e) 
 
 
     setTimeout(() => {
-      window.location.href = "Assests/Dashboard/Dashboard-user.html";
+      window.location.href = "Assests/Dashboard/User_Profile/connect.html";
       document.getElementById('login-form-user').reset();
     }, 1500);
   }
