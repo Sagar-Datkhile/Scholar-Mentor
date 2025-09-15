@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { AuthProvider } from "@/components/auth-provider"
 import { Suspense } from "react"
+import { Toaster as SonnerToaster } from "sonner"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({
           <AuthProvider>{children}</AuthProvider>
         </Suspense>
         <Analytics />
+        <SonnerToaster position="top-right" richColors closeButton />
       </body>
     </html>
   )

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import {
@@ -26,13 +26,61 @@ import {
   Bell,
   Search,
 } from "lucide-react"
-import { useSession, signIn, signOut } from "next-auth/react"
+import { supabase } from "@/lib/supabaseClient"
 
 export function ModernNavigation() {
-  const { data: session, status } = useSession()
-  const user = session?.user
-  const isLoading = status === "loading"
   const [isOpen, setIsOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [user, setUser] = useState<{
+    id: string
+    email?: string
+    name?: string
+    image?: string
+  } | null>(null)
+
+  useEffect(() => {
+    let isMounted = true
+
+    const load = async () => {
+      try {
+        const { data: userResp } = await supabase.auth.getUser()
+        if (!isMounted) return
+        const u = userResp?.user
+        setUser(
+          u
+            ? {
+                id: u.id,
+                email: u.email ?? undefined,
+                name: (u.user_metadata?.name as string | undefined) ?? u.email ?? undefined,
+                image: (u.user_metadata?.avatar_url as string | undefined) ?? undefined,
+              }
+            : null
+        )
+      } finally {
+        if (isMounted) setIsLoading(false)
+      }
+    }
+
+    load()
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      const u = session?.user ?? null
+      setUser(
+        u
+          ? {
+              id: u.id,
+              email: u.email ?? undefined,
+              name: (u.user_metadata?.name as string | undefined) ?? u.email ?? undefined,
+              image: (u.user_metadata?.avatar_url as string | undefined) ?? undefined,
+            }
+          : null
+      )
+    })
+
+    return () => {
+      isMounted = false
+      sub.subscription.unsubscribe()
+    }
+  }, [])
 
   const navigationItems = [
     { href: "/blogs", label: "Blogs", icon: BookOpen },
@@ -42,8 +90,9 @@ export function ModernNavigation() {
 
   const handleSignOut = async () => {
     try {
-      await signOut()
+      await supabase.auth.signOut()
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error("Sign out failed:", error)
     }
   }
@@ -132,7 +181,7 @@ export function ModernNavigation() {
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={() => signOut()} className="text-destructive">
+                    <DropdownMenuItem onClick={handleSignOut} className="text-destructive">
                       <LogOut className="mr-2 h-4 w-4" />
                       <span>Sign out</span>
                     </DropdownMenuItem>

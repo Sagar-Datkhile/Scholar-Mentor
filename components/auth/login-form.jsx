@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { Eye, EyeOff } from "lucide-react"
+import { toast } from "sonner"
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -26,15 +27,40 @@ export default function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const { error } = await supabase.auth.signInWithPassword({
-      email: formData.email,
-      password: formData.password,
-    })
-    if (error) {
-      alert(error.message)
-      return
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      })
+
+      if (error) {
+        const msg = error.message?.toLowerCase?.() || ""
+        if (
+          error.name === "AuthApiError" ||
+          msg.includes("confirm") ||
+          msg.includes("not confirmed") ||
+          msg.includes("email_not_confirmed")
+        ) {
+          toast.error("Please verify your email before logging in.")
+          return
+        }
+        toast.error("Login failed. Please check your credentials.")
+        return
+      }
+
+      const user = data?.user
+      const emailConfirmed = Boolean(user?.email_confirmed_at) || Boolean(user?.user_metadata?.email_verified)
+      if (!emailConfirmed) {
+        await supabase.auth.signOut()
+        toast.error("Please verify your email before logging in.")
+        return
+      }
+
+      toast.success("Logged in successfully!")
+      window.location.href = "/"
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.")
     }
-    window.location.href = "/"
   }
 
   const handleOAuthLogin = (provider) => {
