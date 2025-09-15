@@ -4,15 +4,30 @@ import { supabaseAdmin } from "@/lib/supabaseAdmin"
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { id, full_name, email, role, branch, year, avatar_url } = body
+    const { id, name, email, role, branch, year, avatar_url, skills, github_link, linkedin_link, portfolio_link } = body
 
-    if (!id || !email || !full_name) {
-      return new NextResponse("Missing id, email, or full_name", { status: 400 })
+    if (!id || !email || !name) {
+      return new NextResponse("Missing id, email, or name", { status: 400 })
     }
 
     const { error } = await supabaseAdmin
       .from("profiles")
-      .upsert({ id, full_name, email, role, branch, year, avatar_url }, { onConflict: "id" })
+      .upsert(
+        {
+          id,
+          name,
+          email,
+          role,
+          branch,
+          year,
+          avatar_url,
+          skills: skills ?? [],
+          github_link,
+          linkedin_link,
+          portfolio_link,
+        },
+        { onConflict: "id" },
+      )
 
     if (error) {
       return new NextResponse(error.message, { status: 400 })

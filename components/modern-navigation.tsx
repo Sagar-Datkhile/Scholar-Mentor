@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import {
@@ -29,6 +29,9 @@ import {
 import { supabase } from "@/lib/supabaseClient"
 
 export function ModernNavigation() {
+  const { data: session, status } = useSession()
+  const user = session?.user
+  const isLoading = status === "loading"
   const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [user, setUser] = useState<{
@@ -90,12 +93,55 @@ export function ModernNavigation() {
 
   const handleSignOut = async () => {
     try {
-      await supabase.auth.signOut()
+      await signOut()
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error("Sign out failed:", error)
+    } finally {
+      setIsLoading(false)
     }
   }
+
+  // Load current session
+  useEffect(() => {
+    let isMounted = true
+    ;(async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession()
+      if (!isMounted) return
+      if (session?.user) {
+        setUser({
+          id: session.user.id,
+          email: session.user.email,
+          name: (session.user.user_metadata as any)?.full_name ?? null,
+          image: (session.user.user_metadata as any)?.avatar_url ?? null,
+        })
+      } else {
+        setUser(null)
+      }
+    })()
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser({
+          id: session.user.id,
+          email: session.user.email,
+          name: (session.user.user_metadata as any)?.full_name ?? null,
+          image: (session.user.user_metadata as any)?.avatar_url ?? null,
+        })
+      } else {
+        setUser(null)
+      }
+    })
+
+    return () => {
+      isMounted = false
+      subscription.unsubscribe()
+    }
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
