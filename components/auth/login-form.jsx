@@ -37,8 +37,8 @@ export default function LoginForm() {
     window.location.href = "/"
   }
 
-  const handleOAuthLogin = (provider) => {
-    signIn(provider, { callbackUrl: "/" })
+  const handleOAuthLogin = async (provider) => {
+    await supabase.auth.signInWithOAuth({ provider, options: { redirectTo: `${window.location.origin}/` } })
   }
 
   return (

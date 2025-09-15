@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import {
@@ -26,12 +26,13 @@ import {
   Bell,
   Search,
 } from "lucide-react"
-import { useSession, signIn, signOut } from "next-auth/react"
+import { supabase } from "@/lib/supabaseClient"
 
 export function ModernNavigation() {
-  const { data: session, status } = useSession()
-  const user = session?.user
-  const isLoading = status === "loading"
+  const [isLoading, setIsLoading] = useState(false)
+  const [user, setUser] = useState<{ id: string; email?: string | null; name?: string | null; image?: string | null } | null>(
+    null,
+  )
   const [isOpen, setIsOpen] = useState(false)
 
   const navigationItems = [
@@ -42,11 +43,56 @@ export function ModernNavigation() {
 
   const handleSignOut = async () => {
     try {
-      await signOut()
+      setIsLoading(true)
+      await supabase.auth.signOut()
+      setUser(null)
     } catch (error) {
       console.error("Sign out failed:", error)
+    } finally {
+      setIsLoading(false)
     }
   }
+
+  // Load current session
+  useEffect(() => {
+    let isMounted = true
+    ;(async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession()
+      if (!isMounted) return
+      if (session?.user) {
+        setUser({
+          id: session.user.id,
+          email: session.user.email,
+          name: (session.user.user_metadata as any)?.full_name ?? null,
+          image: (session.user.user_metadata as any)?.avatar_url ?? null,
+        })
+      } else {
+        setUser(null)
+      }
+    })()
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser({
+          id: session.user.id,
+          email: session.user.email,
+          name: (session.user.user_metadata as any)?.full_name ?? null,
+          image: (session.user.user_metadata as any)?.avatar_url ?? null,
+        })
+      } else {
+        setUser(null)
+      }
+    })
+
+    return () => {
+      isMounted = false
+      subscription.unsubscribe()
+    }
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
